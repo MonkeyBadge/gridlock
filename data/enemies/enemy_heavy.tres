@@ -1,6 +1,9 @@
-[gd_resource type="Resource" script_class="EnemyDefinition" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="EnemyDefinition" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/resources/EnemyDefinition.gd" id="1_heavy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_heavy"]
+size = Vector3(1.0, 1.8, 1.0)
 
 [resource]
 script = ExtResource("1_heavy")
@@ -8,5 +11,5 @@ enemy_id = "heavy"
 display_name = "Brute"
 speed = 1.5
 scale = Vector3(1.1, 1.1, 1.1)
-mesh = null
+mesh = SubResource("BoxMesh_heavy")
 position_jitter = 0.15

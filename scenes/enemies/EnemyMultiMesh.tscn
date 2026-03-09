@@ -1,19 +1,33 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=8 format=3]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_basic"]
+radius = 0.35
+height = 1.4
 
 [sub_resource type="MultiMesh" id="MultiMesh_basic"]
 transform_format = 1
 use_colors = false
 instance_count = 0
+mesh = SubResource("CapsuleMesh_basic")
+
+[sub_resource type="SphereMesh" id="SphereMesh_fast"]
+radius = 0.25
+height = 0.5
 
 [sub_resource type="MultiMesh" id="MultiMesh_fast"]
 transform_format = 1
 use_colors = false
 instance_count = 0
+mesh = SubResource("SphereMesh_fast")
+
+[sub_resource type="BoxMesh" id="BoxMesh_heavy"]
+size = Vector3(1.0, 1.8, 1.0)
 
 [sub_resource type="MultiMesh" id="MultiMesh_heavy"]
 transform_format = 1
 use_colors = false
 instance_count = 0
+mesh = SubResource("BoxMesh_heavy")
 
 [node name="EnemyMultiMesh" type="Node3D"]
 

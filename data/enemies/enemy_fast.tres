@@ -1,6 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyDefinition" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="EnemyDefinition" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/resources/EnemyDefinition.gd" id="1_fast"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fast"]
+radius = 0.25
+height = 0.5
 
 [resource]
 script = ExtResource("1_fast")
@@ -8,5 +12,5 @@ enemy_id = "fast"
 display_name = "Skitter"
 speed = 5.0
 scale = Vector3(0.45, 0.45, 0.45)
-mesh = null
+mesh = SubResource("SphereMesh_fast")
 position_jitter = 0.4
