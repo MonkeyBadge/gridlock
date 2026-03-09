@@ -1,3 +1,4 @@
+class_name PathfindingBridge
 extends RefCounted
 
 ## GDScript adapter that instantiates C# FlowField and PathValidator objects.
