@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://pathoverlay001"]
+
+[ext_resource type="Script" path="res://scripts/controllers/PathOverlay.gd" id="1_overlay_script"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_overlay"]
+size = Vector2(40.0, 40.0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_arrow"]
+shader = "res://shaders/path_arrow.gdshader"
+shader_parameter/grid_width = 20
+shader_parameter/grid_height = 20
+shader_parameter/time_offset = 0.0
+shader_parameter/arrow_brightness = 0.6
+
+[node name="PathOverlay" type="Node3D"]
+script = ExtResource("1_overlay_script")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0, 0.05, 20.0)
+mesh = SubResource("PlaneMesh_overlay")
+material_override = SubResource("ShaderMaterial_arrow")
