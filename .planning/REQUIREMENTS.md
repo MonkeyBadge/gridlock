@@ -16,6 +16,8 @@
 - [ ] **MAP-01**: Maps are procedurally generated with varied shapes each run
 - [ ] **MAP-02**: Entry and exit points vary between generated maps
 - [ ] **MAP-03**: Generated maps are always solvable (valid enemy path guaranteed at start)
+- [ ] **MAP-04**: Maps contain pre-placed static objects (rocks, ruins, terrain features) that block both tower placement and enemy movement
+- [ ] **MAP-05**: Static map objects create strategic constraints players must work around or exploit when building their maze
 
 ### Wave Modes
 - [ ] **WAVE-01**: Player can play in Timed Waves mode (countdown between waves, prep phase)
