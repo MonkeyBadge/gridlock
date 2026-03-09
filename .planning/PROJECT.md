@@ -95,6 +95,11 @@ Counters (suggested):
 - [ ] 3D camera with usable play angle
 - [ ] Steam Early Access release (storefront, build, basic achievements)
 
+### Performance
+- [ ] Game must be optimized for smooth performance without sacrificing visual/gameplay quality
+- [ ] Dynamic pathfinding (A*) must handle many enemies re-routing simultaneously without frame drops
+- [ ] Tower placement, effect rendering, and enemy counts should scale without degrading experience
+
 ### Out of Scope (v1)
 - Multiplayer — deferred post-EA launch
 - Continuous stream wave mode — deferred
@@ -115,6 +120,7 @@ Counters (suggested):
 | 3D perspective | Modern feel, differentiates from 2D TD market | Confirmed |
 | Roguelite + Endless as dual modes | Satisfies both structured-run and infinite-grind players | Confirmed |
 | Elemental combos as stretch goal | Base effects ship first, combos add depth without blocking launch | Pending |
+| Performance as a first-class requirement | Optimization must be built in from the start, not bolted on later | Confirmed |
 
 ---
 
