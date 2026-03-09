@@ -13,11 +13,10 @@
 - [ ] **CORE-08**: Towers of the same class have intra-class synergy bonuses that activate when placed together
 
 ### Maps
-- [ ] **MAP-01**: Maps are procedurally generated with varied shapes each run
-- [ ] **MAP-02**: Entry and exit points vary between generated maps
-- [ ] **MAP-03**: Generated maps are always solvable (valid enemy path guaranteed at start)
-- [ ] **MAP-04**: Maps contain pre-placed static objects (rocks, ruins, terrain features) that block both tower placement and enemy movement
-- [ ] **MAP-05**: Static map objects create strategic constraints players must work around or exploit when building their maze
+- [ ] **MAP-01**: A set of hand-crafted maps with distinct shapes and layouts available at launch
+- [ ] **MAP-02**: Each map has multiple spawn and goal point configurations players can choose from
+- [ ] **MAP-03**: Maps contain pre-placed static objects (rocks, ruins, terrain features) that block both tower placement and enemy movement
+- [ ] **MAP-04**: Static map objects create strategic constraints players must work around or exploit when building their maze
 
 ### Wave Modes
 - [ ] **WAVE-01**: Player can play in Timed Waves mode (countdown between waves, prep phase)
@@ -70,6 +69,7 @@
 
 ## v2 Requirements (Post-EA Updates)
 
+- Procedurally generated maps — defer to post-EA update
 - Colorblind / icon mode for damage types and status effects
 - Controller / gamepad support
 - Continuous stream wave mode
