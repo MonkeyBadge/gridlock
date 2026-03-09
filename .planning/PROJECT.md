@@ -103,7 +103,7 @@ Counters (suggested):
 ### Monetization
 - [ ] Paid game on Steam (buy-to-play, price TBD)
 - [ ] DLC packs post-EA launch (content expansions — new classes, maps, enemies)
-- No free-to-play, no microtransactions, no loot boxes
+- Free-to-play, microtransactions, and loot boxes not planned for launch — may reconsider post-EA if it feels right
 
 ### Out of Scope (v1)
 - Multiplayer — deferred post-EA launch
