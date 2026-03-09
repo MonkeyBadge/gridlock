@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://toastnotification"]
+
+[ext_resource type="Script" path="res://scenes/hud/ToastNotification.gd" id="1_toast_script"]
+
+[node name="ToastNotification" type="CanvasLayer"]
+visible = false
+layer = 10
+script = ExtResource("1_toast_script")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -200.0
+offset_right = 200.0
+offset_top = 80.0
+offset_bottom = 120.0
+
+[node name="Message" type="Label" parent="Panel"]
+layout_mode = 2
+text = "Path blocked — enemies must have a route"
+horizontal_alignment = 1
