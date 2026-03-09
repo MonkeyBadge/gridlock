@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://towerplacerscene"]
+
+[ext_resource type="Script" path="res://scripts/controllers/TowerPlacer.gd" id="1_placer_script"]
+[ext_resource type="PackedScene" path="res://scenes/towers/TowerGhost.tscn" id="2_ghost"]
+[ext_resource type="PackedScene" path="res://scenes/towers/TowerWall.tscn" id="3_wall"]
+
+[node name="TowerPlacer" type="Node3D"]
+script = ExtResource("1_placer_script")
+ghost_scene = ExtResource("2_ghost")
+tower_wall_scene = ExtResource("3_wall")
