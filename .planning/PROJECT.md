@@ -127,6 +127,8 @@ Counters (suggested):
 | Roguelite + Endless as dual modes | Satisfies both structured-run and infinite-grind players | Confirmed |
 | Elemental combos as stretch goal | Base effects ship first, combos add depth without blocking launch | Pending |
 | Performance as a first-class requirement | Optimization must be built in from the start, not bolted on later | Confirmed |
+| Bosses follow the maze | Bosses pathfind through player-built maze like normal enemies — maze design always matters | Confirmed |
+| Boss special abilities | Bosses get abilities (e.g. jump to skip a maze section, mid-fight armor type change) for spice without breaking maze integrity | Confirmed |
 
 ---
 
