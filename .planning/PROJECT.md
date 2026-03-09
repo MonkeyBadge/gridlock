@@ -1,4 +1,4 @@
-# Project: Maze Tower Defense (Working Title)
+# Project: [Title TBD]
 
 ## Vision
 
@@ -100,10 +100,16 @@ Counters (suggested):
 - [ ] Dynamic pathfinding (A*) must handle many enemies re-routing simultaneously without frame drops
 - [ ] Tower placement, effect rendering, and enemy counts should scale without degrading experience
 
+### Monetization
+- [ ] Paid game on Steam (buy-to-play, price TBD)
+- [ ] DLC packs post-EA launch (content expansions — new classes, maps, enemies)
+- No free-to-play, no microtransactions, no loot boxes
+
 ### Out of Scope (v1)
 - Multiplayer — deferred post-EA launch
+- DLC — post-EA only
 - Continuous stream wave mode — deferred
-- More than 3 classes at EA launch — expand post-launch
+- More than 3 classes at EA launch — expand post-launch via DLC/updates
 - Elemental combo reactions — stretch goal, base effects first
 - Full story/campaign — EA is run-based, no narrative required at launch
 
