@@ -6,7 +6,7 @@ Phase 1 — In Progress
 ## Phase Status
 | Phase | Name | Status | Requirements |
 |-------|------|--------|--------------|
-| 1 | The Maze Works | In Progress (Plan 01 complete, Plan 02 complete, Plan 03 complete) | CORE-01, CORE-02, CORE-03, MAP-01, MAP-03, MAP-04, WAVE-01, WAVE-02, ENEMY-01, UI-01, UI-02, STEAM-04 |
+| 1 | The Maze Works | In Progress (Plan 01 complete, Plan 02 complete, Plan 03 complete, Plan 04 complete) | CORE-01, CORE-02, CORE-03, MAP-01, MAP-03, MAP-04, WAVE-01, WAVE-02, ENEMY-01, UI-01, UI-02, STEAM-04 |
 | 2 | Towers Kill Things | Not Started | DMG-01, DMG-02, DMG-03, ENEMY-02, CORE-04, CORE-05, UI-03, UI-04 |
 | 3 | Status Effects & Traps | Not Started | DMG-04, DMG-05, DMG-06, DMG-07, CORE-06, UI-05 |
 | 4 | Classes & Synergies | Not Started | CLASS-01, CLASS-02, CLASS-03, CLASS-04, CORE-07, CORE-08 |
@@ -41,3 +41,10 @@ Plan 02 complete: 2026-03-09 (EnemyManager, GameState, WaveController, enemy/wav
 Plan 03 complete: 2026-03-09 (TowerPlacer, TowerWall, TowerGhost, ToastNotification, real test bodies for CORE-01/02/03)
   Summary: 03-PLAN-tower-placement-SUMMARY.md created 2026-03-09
   Integration note: TowerPlacer.camera and TowerPlacer.toast must be wired in Game.tscn (Plan 05)
+Plan 04 complete: 2026-03-09 (CameraRig, HUD, TopBar, BottomPanel, SendWaveButton, RangeOverlay stub)
+  Summary: 04-PLAN-camera-and-hud-SUMMARY.md created 2026-03-09
+  Integration notes:
+    - Call HUD.setup(wave_controller, wave_count) from Game.tscn after WaveController is ready
+    - Connect BottomPanel.tower_selected to TowerPlacer._on_tower_type_selected in Game.tscn
+    - Connect TowerPlacer rejection path to HUD.show_path_blocked_toast()
+    - Pass camera_rig.get_camera() to TowerPlacer.camera export in Game.tscn
