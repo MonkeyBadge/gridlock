@@ -97,7 +97,7 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion and _is_dragging:
 		var delta_mouse: Vector2 = event.position - _drag_start_mouse
-		var pan_offset := Vector3(-delta_mouse.x, 0.0, -delta_mouse.y) * DRAG_SENSITIVITY * ZOOM_DISTANCES[_zoom_level]
+		var pan_offset: Vector3 = Vector3(-delta_mouse.x, 0.0, -delta_mouse.y) * DRAG_SENSITIVITY * ZOOM_DISTANCES[_zoom_level]
 		global_position = _drag_start_rig_pos + pan_offset
 		_clamp_to_map_bounds()
 
