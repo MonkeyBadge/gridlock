@@ -10,8 +10,8 @@ var _path_validator  # PathValidator (C#)
 
 
 func _init() -> void:
-	_flow_field = ClassDB.instantiate("FlowField")
-	_path_validator = ClassDB.instantiate("PathValidator")
+	_flow_field = FlowField.new()
+	_path_validator = PathValidator.new()
 
 
 ## Compute the flow field for the current grid state.
