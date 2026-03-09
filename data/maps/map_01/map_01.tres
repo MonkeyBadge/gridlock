@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MapDefinition" load_steps=2 format=3 uid="uid://map01"]
+
+[ext_resource type="Script" path="res://scripts/resources/MapDefinition.gd" id="1_map_def"]
+
+[resource]
+script = ExtResource("1_map_def")
+map_name = "map_01"
+map_display_name = "The Labyrinth"
+grid_width = 20
+grid_height = 20
+spawn_positions = [Vector2i(0, 10)]
+exit_position = Vector2i(19, 10)
+static_object_positions = [
+Vector2i(4, 6),
+Vector2i(4, 7),
+Vector2i(4, 8),
+Vector2i(4, 12),
+Vector2i(4, 13),
+Vector2i(4, 14),
+Vector2i(10, 4),
+Vector2i(10, 5),
+Vector2i(10, 15),
+Vector2i(10, 16),
+Vector2i(15, 8),
+Vector2i(15, 9),
+Vector2i(15, 11),
+Vector2i(15, 12)
+]
