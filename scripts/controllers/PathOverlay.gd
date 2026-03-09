@@ -15,7 +15,11 @@ var _elapsed: float = 0.0
 
 func _ready() -> void:
 	FlowFieldManager.flow_field_updated.connect(_on_flow_field_updated)
-	# If flow field already computed, build texture immediately
+	# Defer one frame so Map01._ready() has time to initialize the grid and recompute
+	call_deferred("_deferred_init")
+
+
+func _deferred_init() -> void:
 	if FlowFieldManager.current_version > 0:
 		_rebuild_texture()
 
