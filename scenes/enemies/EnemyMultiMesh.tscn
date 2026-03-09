@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3]
+
+[sub_resource type="MultiMesh" id="MultiMesh_basic"]
+transform_format = 1
+use_colors = false
+instance_count = 0
+
+[sub_resource type="MultiMesh" id="MultiMesh_fast"]
+transform_format = 1
+use_colors = false
+instance_count = 0
+
+[sub_resource type="MultiMesh" id="MultiMesh_heavy"]
+transform_format = 1
+use_colors = false
+instance_count = 0
+
+[node name="EnemyMultiMesh" type="Node3D"]
+
+[node name="MMI_Basic" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_basic")
+
+[node name="MMI_Fast" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_fast")
+
+[node name="MMI_Heavy" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_heavy")

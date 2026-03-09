@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GridManager="*res://autoloads/GridManager.gd"
 FlowFieldManager="*res://autoloads/FlowFieldManager.gd"
 GameState="*res://autoloads/GameState.gd"
+EnemyManager="*res://autoloads/EnemyManager.gd"
 
 [display]
 
