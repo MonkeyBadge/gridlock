@@ -1,0 +1,12 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/controllers/WaveController.gd" id="1_wc"]
+[ext_resource type="Resource" path="res://data/waves/wave_01.tres" id="2_w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_02.tres" id="3_w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_03.tres" id="4_w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_04.tres" id="5_w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_05.tres" id="6_w5"]
+
+[node name="WaveController" type="Node"]
+script = ExtResource("1_wc")
+wave_definitions = [ExtResource("2_w1"), ExtResource("3_w2"), ExtResource("4_w3"), ExtResource("5_w4"), ExtResource("6_w5")]
