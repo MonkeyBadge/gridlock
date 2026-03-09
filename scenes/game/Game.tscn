@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://game001"]
+
+[ext_resource type="Script" path="res://scenes/game/Game.gd" id="1_game_script"]
+[ext_resource type="PackedScene" path="res://scenes/maps/Map01.tscn" id="2_map01"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/EnemyMultiMesh.tscn" id="3_enemy_mm"]
+[ext_resource type="PackedScene" path="res://scenes/game/TowerPlacer.tscn" id="4_tower_placer"]
+[ext_resource type="PackedScene" path="res://scenes/game/WaveController.tscn" id="5_wave_ctrl"]
+[ext_resource type="PackedScene" path="res://scenes/game/PathOverlay.tscn" id="6_path_overlay"]
+[ext_resource type="PackedScene" path="res://scenes/camera/CameraRig.tscn" id="7_camera_rig"]
+[ext_resource type="PackedScene" path="res://scenes/hud/HUD.tscn" id="8_hud"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_game_script")
+
+[node name="Map01" parent="." instance=ExtResource("2_map01")]
+
+[node name="EnemyMultiMesh" parent="." instance=ExtResource("3_enemy_mm")]
+
+[node name="TowerPlacer" parent="." instance=ExtResource("4_tower_placer")]
+
+[node name="WaveController" parent="." instance=ExtResource("5_wave_ctrl")]
+
+[node name="PathOverlay" parent="." instance=ExtResource("6_path_overlay")]
+
+[node name="CameraRig" parent="." instance=ExtResource("7_camera_rig")]
+
+[node name="HUD" parent="." instance=ExtResource("8_hud")]
