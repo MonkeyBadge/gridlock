@@ -5,13 +5,13 @@ extends RefCounted
 ## This is the clean GDScript/C# boundary defined in ADR-02.
 ## The rest of the GDScript codebase calls this class; it never calls C# directly.
 
-var _flow_field: FlowField
-var _path_validator: PathValidator
+var _flow_field  # FlowField (C#)
+var _path_validator  # PathValidator (C#)
 
 
 func _init() -> void:
-	_flow_field = FlowField.new()
-	_path_validator = PathValidator.new()
+	_flow_field = ClassDB.instantiate("FlowField")
+	_path_validator = ClassDB.instantiate("PathValidator")
 
 
 ## Compute the flow field for the current grid state.
