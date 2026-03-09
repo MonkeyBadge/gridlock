@@ -20,12 +20,16 @@ var _last_hover_cell: Vector2i = Vector2i(-1, -1)
 var _hover_cell_valid: bool = false
 ## Track all placed tower nodes for potential future removal (CORE-04, Phase 2).
 var _placed_towers: Array[Node3D] = []
+## UI-02 range overlay stub: zero-radius torus, toggled on tower selection.
+## Phase 2 will set the actual range radius when towers have attack range.
+@onready var _range_overlay: MeshInstance3D = $RangeOverlay
 
 
 func _ready() -> void:
 	_ghost = ghost_scene.instantiate()
 	add_child(_ghost)
 	_ghost.visible = false
+	_range_overlay.visible = false
 
 
 func activate_placement_mode() -> void:
@@ -36,7 +40,17 @@ func activate_placement_mode() -> void:
 func deactivate_placement_mode() -> void:
 	_is_placement_mode = false
 	_ghost.visible = false
+	_range_overlay.visible = false
 	_last_hover_cell = Vector2i(-1, -1)
+
+
+## Called when BottomPanel emits tower_selected(tower_type_id).
+## Wired by Game.tscn after assembly.
+func _on_tower_type_selected(_tower_type_id: String) -> void:
+	activate_placement_mode()
+	# Show range overlay at ghost position during placement mode
+	_range_overlay.visible = _is_placement_mode
+	_range_overlay.global_position = _ghost.global_position
 
 
 func _input(event: InputEvent) -> void:
@@ -72,8 +86,9 @@ func _update_hover(screen_pos: Vector2) -> void:
 		return
 	_last_hover_cell = cell
 
-	# Move the ghost to the hovered cell center.
+	# Move the ghost and range overlay to the hovered cell center.
 	_ghost.global_position = GridManager.grid_to_world(cell)
+	_range_overlay.global_position = _ghost.global_position
 
 	# Validate placement.
 	if not GridManager.is_in_bounds(cell):

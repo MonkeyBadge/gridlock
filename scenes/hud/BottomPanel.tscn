@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bottompanel001"]
+
+[ext_resource type="Script" path="res://scripts/hud/BottomPanel.gd" id="1_bottompanel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bottompanel"]
+bg_color = Color(0.05, 0.05, 0.1, 0.85)
+
+[node name="BottomPanel" type="PanelContainer"]
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bottompanel")
+script = ExtResource("1_bottompanel")
+
+[node name="TowerButtons" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="WallTowerButton" type="Button" parent="TowerButtons"]
+text = "Wall Tower [1]"
+tooltip_text = "Place a wall to block enemy movement"
