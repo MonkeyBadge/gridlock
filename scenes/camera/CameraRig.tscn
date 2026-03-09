@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://camerarig001"]
+
+[ext_resource type="Script" path="res://scripts/controllers/CameraRig.gd" id="1_camerarig"]
+
+[node name="CameraRig" type="Node3D"]
+position = Vector3(20, 0, 20)
+script = ExtResource("1_camerarig")
+map_width_units = 40.0
+map_height_units = 40.0
+
+[node name="CameraPivot" type="Node3D" parent="."]
+rotation_degrees = Vector3(-60, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+position = Vector3(0, 0, 30)
+fov = 60.0
+near = 0.1
+far = 500.0
