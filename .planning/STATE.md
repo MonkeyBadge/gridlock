@@ -35,4 +35,6 @@ Phase 1 — In Progress
 ## Notes
 Initialized: 2026-03-09
 Plan 01 complete: 2026-03-09 (GridManager, FlowFieldManager, C# pathfinding, map + GridCell resources)
+  Summary: 01-PLAN-foundation-SUMMARY.md created 2026-03-09
+  GUT manual setup required: see tests/SETUP.md
 Plan 02 complete: 2026-03-09 (EnemyManager, GameState, WaveController, enemy/wave data resources)
