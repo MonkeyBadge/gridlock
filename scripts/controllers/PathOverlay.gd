@@ -46,11 +46,11 @@ func _rebuild_texture() -> void:
 	var h: int = GridManager.grid_height
 	if w == 0 or h == 0:
 		return
-	var img: Image = Image.create(w, h, false, Image.FORMAT_RGF)
+	var img: Image = Image.create(w, h, false, Image.FORMAT_RGBA8)
 	for y in range(h):
 		for x in range(w):
 			var dir: Vector2i = FlowFieldManager.get_direction(Vector2i(x, y))
-			# Encode direction.x and direction.y in RG channels, remapped [-1,1] -> [0,1]
+			# Encode direction in RG channels, remapped [-1,1] -> [0,1]
 			var r: float = (float(dir.x) + 1.0) * 0.5
 			var g: float = (float(dir.y) + 1.0) * 0.5
 			img.set_pixel(x, y, Color(r, g, 0.0, 1.0))

@@ -1,40 +1,23 @@
 shader_type spatial;
 render_mode unshaded, cull_disabled, depth_draw_never, blend_add;
 
-uniform sampler2D direction_texture : hint_default_black, filter_nearest;
+uniform sampler2D direction_texture : filter_nearest;
 uniform int grid_width = 20;
 uniform int grid_height = 20;
-uniform float time_offset = 0.0;  // Passed from PathOverlay.gd each frame
-uniform float arrow_brightness = 0.6;
-
-// Draw an arrow shape in local cell UV [0,1]^2 pointing in direction dir_norm.
-// Returns alpha value for the arrow glyph.
-float arrow_alpha(vec2 cell_uv, vec2 dir_norm) {
-    // Center the cell UV
-    vec2 uv = cell_uv - vec2(0.5);
-    // Project onto direction and perpendicular
-    float fwd = dot(uv, dir_norm);
-    float side = abs(dot(uv, vec2(-dir_norm.y, dir_norm.x)));
-    // Animated scroll: shift the fwd coordinate over time
-    float anim_fwd = fract(fwd + time_offset);
-    // Arrow body: thin rectangle
-    float body = step(side, 0.08) * step(0.05, anim_fwd) * step(anim_fwd, 0.55);
-    // Arrow head: triangle
-    float head = step(side, 0.22 * (0.72 - anim_fwd)) * step(0.55, anim_fwd) * step(anim_fwd, 0.75);
-    return clamp(body + head, 0.0, 1.0);
-}
+uniform float time_offset = 0.0;
 
 void fragment() {
-    // Determine which grid cell this fragment belongs to
+    // Map this fragment to a grid cell
     vec2 grid_uv = UV * vec2(float(grid_width), float(grid_height));
-    ivec2 cell = ivec2(int(grid_uv.x), int(grid_uv.y));
-    vec2 cell_local_uv = fract(grid_uv);
+    vec2 cell_local = fract(grid_uv);
 
-    // Sample direction texture (encoded as RG = direction.x, direction.y, remapped from [-1,1] to [0,1])
-    vec4 dir_sample = texelFetch(direction_texture, cell, 0);
-    vec2 dir = dir_sample.rg * 2.0 - vec2(1.0);  // Remap [0,1] -> [-1,1]
+    // Sample direction from texture using normalised UV
+    vec2 tex_uv = (floor(grid_uv) + vec2(0.5)) / vec2(float(grid_width), float(grid_height));
+    vec4 sample = texture(direction_texture, tex_uv);
 
-    // If direction is zero (exit cell or unreachable), no arrow
+    // Decode: R/G encoded as (value + 1.0) * 0.5  →  remap back to [-1, 1]
+    vec2 dir = sample.rg * 2.0 - vec2(1.0);
+
     float dir_len = length(dir);
     if (dir_len < 0.1) {
         ALBEDO = vec3(0.0);
@@ -43,9 +26,17 @@ void fragment() {
     }
 
     vec2 dir_norm = dir / dir_len;
-    float alpha = arrow_alpha(cell_local_uv, dir_norm);
 
-    // Glow color: teal/cyan
-    ALBEDO = vec3(0.1, 0.9, 0.8) * arrow_brightness;
-    ALPHA = alpha * 0.85;
+    // Draw animated arrow in cell-local UV space
+    vec2 uv = cell_local - vec2(0.5);
+    float fwd = dot(uv, dir_norm);
+    float side = abs(dot(uv, vec2(-dir_norm.y, dir_norm.x)));
+    float anim = fract(fwd + time_offset);
+
+    float body = step(side, 0.08) * step(0.05, anim) * step(anim, 0.55);
+    float head = step(side, 0.22 * (0.72 - anim)) * step(0.55, anim) * step(anim, 0.75);
+    float alpha = clamp(body + head, 0.0, 1.0);
+
+    ALBEDO = vec3(0.1, 0.9, 0.8) * 0.8;
+    ALPHA = alpha;
 }
