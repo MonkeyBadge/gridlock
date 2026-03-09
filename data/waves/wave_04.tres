@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="WaveDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/WaveDefinition.gd" id="1_wavedef"]
+[ext_resource type="Script" path="res://scripts/resources/SpawnGroupResource.gd" id="2_spawngrp"]
+
+[sub_resource type="Resource" id="grp_4_basic"]
+script = ExtResource("2_spawngrp")
+enemy_id = "basic"
+count = 8
+spawn_interval = 1.0
+delay_from_wave_start = 0.0
+
+[sub_resource type="Resource" id="grp_4_fast"]
+script = ExtResource("2_spawngrp")
+enemy_id = "fast"
+count = 6
+spawn_interval = 0.5
+delay_from_wave_start = 2.0
+
+[sub_resource type="Resource" id="grp_4_heavy"]
+script = ExtResource("2_spawngrp")
+enemy_id = "heavy"
+count = 3
+spawn_interval = 2.5
+delay_from_wave_start = 4.0
+
+[resource]
+script = ExtResource("1_wavedef")
+wave_number = 4
+inter_wave_delay = 10.0
+groups = [SubResource("grp_4_basic"), SubResource("grp_4_fast"), SubResource("grp_4_heavy")]
