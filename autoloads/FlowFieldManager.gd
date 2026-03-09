@@ -145,8 +145,8 @@ const DIRS := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 func _get_passable_neighbors(pos: Vector2i, width: int, height: int,
 		cells: Array, exclude: Vector2i) -> Array:
 	var result: Array = []
-	for d in DIRS:
-		var n := pos + d
+	for d: Vector2i in DIRS:
+		var n: Vector2i = pos + d
 		if n.x < 0 or n.x >= width or n.y < 0 or n.y >= height:
 			continue
 		if n == exclude:
