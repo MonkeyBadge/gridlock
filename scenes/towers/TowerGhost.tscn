@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://towerghost"]
+
+[ext_resource type="Script" path="res://scenes/towers/TowerGhost.gd" id="1_ghost_script"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_valid"]
+transparency = 1
+albedo_color = Color(0.1, 0.9, 0.1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_invalid"]
+transparency = 1
+albedo_color = Color(0.9, 0.1, 0.1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ghost"]
+size = Vector3(1.8, 2.0, 1.8)
+
+[node name="TowerGhost" type="Node3D"]
+visible = false
+script = ExtResource("1_ghost_script")
+material_valid = SubResource("StandardMaterial3D_valid")
+material_invalid = SubResource("StandardMaterial3D_invalid")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+mesh = SubResource("BoxMesh_ghost")
+surface_material_override/0 = SubResource("StandardMaterial3D_valid")
