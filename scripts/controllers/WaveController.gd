@@ -26,7 +26,8 @@ signal all_waves_complete
 
 
 func _ready() -> void:
-	EnemyManager.enemy_reached_exit.connect(_on_enemy_reached_exit)
+	if not EnemyManager.enemy_reached_exit.is_connected(_on_enemy_reached_exit):
+		EnemyManager.enemy_reached_exit.connect(_on_enemy_reached_exit)
 	_begin_inter_wave_phase()
 
 
