@@ -25,6 +25,9 @@ func _deferred_init() -> void:
 
 
 func _process(delta: float) -> void:
+	# Retry until texture is built (handles race where signal fired before connection)
+	if _direction_texture == null and FlowFieldManager.current_version > 0:
+		_rebuild_texture()
 	if not visible or _direction_texture == null:
 		return
 	_elapsed += delta
@@ -50,14 +53,36 @@ func _rebuild_texture() -> void:
 	var h: int = GridManager.grid_height
 	if w == 0 or h == 0:
 		return
+
+	# Trace cells on the actual enemy path by following flow field from each spawn
+	var path_cells: Dictionary = {}
+	for spawn_pos: Vector2i in GridManager.spawn_positions:
+		var pos: Vector2i = spawn_pos
+		var max_steps: int = w * h
+		var steps: int = 0
+		while steps < max_steps:
+			path_cells[pos] = true
+			if pos == GridManager.exit_position:
+				break
+			var dir: Vector2i = FlowFieldManager.get_direction(pos)
+			if dir == Vector2i.ZERO:
+				break
+			pos = pos + dir
+			steps += 1
+
+	# Build texture: only path cells get a direction, all others stay black (transparent)
 	var img: Image = Image.create(w, h, false, Image.FORMAT_RGBA8)
 	for y in range(h):
 		for x in range(w):
-			var dir: Vector2i = FlowFieldManager.get_direction(Vector2i(x, y))
-			# Encode direction in RG channels, remapped [-1,1] -> [0,1]
-			var r: float = (float(dir.x) + 1.0) * 0.5
-			var g: float = (float(dir.y) + 1.0) * 0.5
-			img.set_pixel(x, y, Color(r, g, 0.0, 1.0))
+			var cell := Vector2i(x, y)
+			if path_cells.has(cell):
+				var dir: Vector2i = FlowFieldManager.get_direction(cell)
+				var r: float = (float(dir.x) + 1.0) * 0.5
+				var g: float = (float(dir.y) + 1.0) * 0.5
+				img.set_pixel(x, y, Color(r, g, 0.0, 1.0))
+			else:
+				# (0.5, 0.5) decodes as direction (0,0) → dir_len=0 → has_dir=0 → transparent
+				img.set_pixel(x, y, Color(0.5, 0.5, 0.0, 1.0))
 	if _direction_texture == null:
 		_direction_texture = ImageTexture.create_from_image(img)
 	else:

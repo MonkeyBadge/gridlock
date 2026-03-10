@@ -13,6 +13,7 @@ shader_parameter/grid_height = 20
 shader_parameter/time_offset = 0.0
 
 [node name="PathOverlay" type="Node3D"]
+visible = false
 script = ExtResource("1_overlay_script")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]

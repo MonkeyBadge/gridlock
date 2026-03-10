@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="WaveDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="WaveDefinition" format=3 uid="uid://b5kvfjpxq4xfa"]
 
-[ext_resource type="Script" path="res://scripts/resources/WaveDefinition.gd" id="1_wavedef"]
-[ext_resource type="Script" path="res://scripts/resources/SpawnGroupResource.gd" id="2_spawngrp"]
+[ext_resource type="Script" uid="uid://umrkp8gj7gyj" path="res://scripts/resources/WaveDefinition.gd" id="1_wavedef"]
+[ext_resource type="Script" uid="uid://di3c5u7vs3lps" path="res://scripts/resources/SpawnGroupResource.gd" id="2_spawngrp"]
 
 [sub_resource type="Resource" id="grp_2_basic"]
 script = ExtResource("2_spawngrp")
 enemy_id = "basic"
 count = 6
 spawn_interval = 1.2
-delay_from_wave_start = 0.0
 
 [sub_resource type="Resource" id="grp_2_fast"]
 script = ExtResource("2_spawngrp")
@@ -20,5 +19,5 @@ delay_from_wave_start = 3.0
 [resource]
 script = ExtResource("1_wavedef")
 wave_number = 2
+groups = Array[ExtResource("2_spawngrp")]([SubResource("grp_2_basic"), SubResource("grp_2_fast")])
 inter_wave_delay = 12.0
-groups = [SubResource("grp_2_basic"), SubResource("grp_2_fast")]

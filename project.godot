@@ -1,18 +1,23 @@
 ; Engine configuration file.
 ; It's best edited using the editor UI and not directly,
-; but the file format allows for manual editing.
-
-; If you are unfamiliar with TOML, this file is much like an INI file.
-; See the documentation for Godot's project settings for more information.
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
 
 config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
 config/name="maze-td"
 config/description="A maze tower defense game"
 run/main_scene="res://scenes/game/Game.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -26,7 +31,6 @@ EnemyManager="*res://autoloads/EnemyManager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/resizable=true
 
 [dotnet]
 
@@ -35,7 +39,3 @@ project/assembly_name="MazeTD"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
-
-[rendering]
-
-renderer/rendering_method="forward_plus"

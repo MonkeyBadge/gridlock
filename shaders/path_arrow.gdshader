@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, cull_disabled, depth_draw_never, blend_add;
+render_mode unshaded, cull_back, depth_draw_never, blend_mix;
 
 uniform sampler2D direction_texture : filter_nearest;
 uniform int grid_width = 20;
@@ -20,13 +20,11 @@ void fragment() {
     vec2 dir = s.rg * 2.0 - 1.0;
     float dir_len = length(dir);
 
-    if (dir_len < 0.1) {
-        ALBEDO = vec3(0.0);
-        ALPHA = 0.0;
-        return;
-    }
+    // has_dir = 1.0 when cell has a valid direction, 0.0 otherwise (exit cell / unreachable)
+    float has_dir = step(0.1, dir_len);
 
-    vec2 dir_norm = dir / dir_len;
+    // Safe normalized direction (avoid divide-by-zero on zero-length dirs)
+    vec2 dir_norm = dir / max(dir_len, 0.001);
 
     // Arrow in cell-local space (centered at 0.5, 0.5)
     vec2 uv = cell_local - vec2(0.5);
@@ -36,8 +34,7 @@ void fragment() {
 
     float body = step(side, 0.08) * step(0.05, anim) * step(anim, 0.55);
     float head = step(side, 0.22 * (0.72 - anim)) * step(0.55, anim) * step(anim, 0.75);
-    float alpha = clamp(body + head, 0.0, 1.0);
 
-    ALBEDO = vec3(0.1, 0.9, 0.8);
-    ALPHA = alpha;
+    ALBEDO = vec3(0.1, 0.95, 0.85);
+    ALPHA = clamp(body + head, 0.0, 1.0) * has_dir * 0.85;
 }
